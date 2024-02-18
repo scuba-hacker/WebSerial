@@ -34,8 +34,6 @@ public:
     void closeAll()
     {
       _ws->closeAll();
-//      delete _ws;
-  //    _ws = nullptr;
     }
 
     // Print
