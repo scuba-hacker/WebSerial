@@ -31,8 +31,14 @@ public:
 
     void msgCallback(RecvMsgHandler _recv);
 
-    // Print
+    void closeAll()
+    {
+      _ws->closeAll();
+      delete _ws;
+      _ws = nullptr;
+    }
 
+    // Print
     size_t write(uint8_t);
     size_t write(const uint8_t* buffer, size_t size);
 
