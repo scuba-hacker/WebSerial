@@ -2,6 +2,10 @@
 
 
 void WebSerialClass::begin(AsyncWebServer *server, const char* url){
+
+    if (_server && _ws)
+        return;
+
     _server = server;
     _ws = new AsyncWebSocket("/webserialws");
 
@@ -44,12 +48,14 @@ void WebSerialClass::msgCallback(RecvMsgHandler _recv){
 
 // Print
 size_t WebSerialClass::write(uint8_t m) {
-  _ws->textAll((const char *)&(m), 1);
+    if (_ws)
+      _ws->textAll((const char *)&(m), 1);
   return(1);
 }
 
 size_t WebSerialClass::write(const uint8_t* buffer, size_t size) {
-  _ws->textAll((const char *)buffer, size);
+    if (_ws)
+      _ws->textAll((const char *)buffer, size);
   return(size);
 }
 
