@@ -41,9 +41,9 @@ public:
     size_t write(const uint8_t* buffer, size_t size);
 
 private:
-    AsyncWebServer *_server;
-    AsyncWebSocket *_ws;
-    RecvMsgHandler _RecvFunc = NULL;
+    AsyncWebServer *_server = nullptr;
+    AsyncWebSocket *_ws = nullptr;
+    RecvMsgHandler _RecvFunc = nullptr;
     
     #if defined(WEBSERIAL_DEBUG)
         void DEBUG_WEB_SERIAL(const char* message);
