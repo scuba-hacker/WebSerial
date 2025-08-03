@@ -33,7 +33,13 @@ public:
 
     void closeAll()
     {
-      _ws->closeAll();
+        if (isInitialised())
+          _ws->closeAll();
+    }
+
+    bool isInitialised()
+    {
+        return _server != nullptr && _ws != nullptr && _RecvFunc != nullptr;
     }
 
     // Print
