@@ -37,6 +37,12 @@ public:
           _ws->closeAll();
     }
 
+    void cleanupClients()
+    {
+        if (isInitialised())
+          _ws->cleanupClients();
+    }
+
     bool isInitialised()
     {
         return _server != nullptr && _ws != nullptr && _RecvFunc != nullptr;
